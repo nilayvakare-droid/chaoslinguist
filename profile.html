@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profile - ChaosLinguist">
+    <title>Profile - ChaosLinguist</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body class="profile-page">
+    <!-- Background Effects -->
+    <div class="background-container">
+        <canvas id="particleCanvas"></canvas>
+        <div class="aurora-bg"></div>
+        <div class="floating-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="scan-lines"></div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar glass" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">ChaosLinguist</span>
+            </div>
+            <button class="close-sidebar" id="closeSidebar" aria-label="Close sidebar">
+                ✕
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="missions.html" class="nav-item">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-text">Missions</span>
+            </a>
+            <a href="leaderboard.html" class="nav-item">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Leaderboard</span>
+            </a>
+            <a href="achievements.html" class="nav-item">
+                <span class="nav-icon">⭐</span>
+                <span class="nav-text">Achievements</span>
+            </a>
+            <a href="profile.html" class="nav-item active">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+            </a>
+            <a href="admin.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Admin</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="btn btn-secondary logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header glass">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <h1>Profile</h1>
+            <div class="header-actions">
+                <button class="btn btn-secondary edit-profile">Edit Profile</button>
+            </div>
+        </header>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <!-- Profile Header -->
+            <section class="profile-header glass">
+                <div class="profile-avatar">
+                    <div class="avatar-image">
+                        <div class="avatar-placeholder">👤</div>
+                    </div>
+                    <div class="avatar-glow"></div>
+                    <button class="avatar-edit" aria-label="Change avatar">📸</button>
+                </div>
+                <div class="profile-info">
+                    <h1>Player One</h1>
+                    <p class="profile-status">Level 15 • Collector</p>
+                    <p class="profile-bio">Language enthusiast learning 5 languages simultaneously</p>
+                    <div class="profile-meta">
+                        <span class="meta-item">📅 Joined March 2026</span>
+                        <span class="meta-item">🔥 12-day streak</span>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="quick-stat">
+                        <span class="stat-value">2,850</span>
+                        <span class="stat-label">Total XP</span>
+                    </div>
+                    <div class="quick-stat">
+                        <span class="stat-value">47</span>
+                        <span class="stat-label">Global Rank</span>
+                    </div>
+                    <div class="quick-stat">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">Achievements</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <h2>Learning Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card glass">
+                        <h3>Missions Completed</h3>
+                        <p class="big-number" data-value="47">0</p>
+                        <p class="stat-subtitle">+3 this week</p>
+                    </div>
+                    <div class="stat-card glass">
+                        <h3>Total Study Time</h3>
+                        <p class="big-number">156</p>
+                        <p class="stat-subtitle">hours</p>
+                    </div>
+                    <div class="stat-card glass">
+                        <h3>Vocabulary Learned</h3>
+                        <p class="big-number" data-value="1842">0</p>
+                        <p class="stat-subtitle">words</p>
+                    </div>
+                    <div class="stat-card glass">
+                        <h3>Current Streak</h3>
+                        <p class="big-number" data-value="12">0</p>
+                        <p class="stat-subtitle">days</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Language Proficiency -->
+            <section class="language-proficiency">
+                <h2>Language Proficiency</h2>
+                <div class="proficiency-list">
+                    <div class="proficiency-item glass">
+                        <div class="lang-header">
+                            <span class="lang-name">🇪🇸 Spanish</span>
+                            <span class="lang-level">Intermediate</span>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="meter-fill" style="width: 68%;"></div>
+                        </div>
+                        <div class="meter-labels">
+                            <span>340 XP</span>
+                            <span>500 XP</span>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-item glass">
+                        <div class="lang-header">
+                            <span class="lang-name">🇫🇷 French</span>
+                            <span class="lang-level">Beginner</span>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="meter-fill" style="width: 45%;"></div>
+                        </div>
+                        <div class="meter-labels">
+                            <span>225 XP</span>
+                            <span>500 XP</span>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-item glass">
+                        <div class="lang-header">
+                            <span class="lang-name">🇩🇪 German</span>
+                            <span class="lang-level">Beginner</span>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="meter-fill" style="width: 32%;"></div>
+                        </div>
+                        <div class="meter-labels">
+                            <span>160 XP</span>
+                            <span>500 XP</span>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-item glass">
+                        <div class="lang-header">
+                            <span class="lang-name">🇯🇵 Japanese</span>
+                            <span class="lang-level">Intermediate</span>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="meter-fill" style="width: 78%;"></div>
+                        </div>
+                        <div class="meter-labels">
+                            <span>390 XP</span>
+                            <span>500 XP</span>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-item glass">
+                        <div class="lang-header">
+                            <span class="lang-name">🇰🇷 Korean</span>
+                            <span class="lang-level">Beginner</span>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="meter-fill" style="width: 55%;"></div>
+                        </div>
+                        <div class="meter-labels">
+                            <span>275 XP</span>
+                            <span>500 XP</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity Timeline -->
+            <section class="activity-timeline">
+                <h2>Recent Activity</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Today</div>
+                        <div class="timeline-content glass">
+                            <span class="activity-badge">✅</span>
+                            <p>Completed "Café Conversation" mission</p>
+                            <p class="activity-meta">+100 XP</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Yesterday</div>
+                        <div class="timeline-content glass">
+                            <span class="activity-badge">🏆</span>
+                            <p>Reached Rank 47 on leaderboard</p>
+                            <p class="activity-meta">New position</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2 days ago</div>
+                        <div class="timeline-content glass">
+                            <span class="activity-badge">⭐</span>
+                            <p>Unlocked achievement "Perfectionist"</p>
+                            <p class="activity-meta">100 points earned</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
