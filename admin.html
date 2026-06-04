@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Dashboard - ChaosLinguist">
+    <title>Admin Dashboard - ChaosLinguist</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-page">
+    <!-- Background Effects -->
+    <div class="background-container">
+        <canvas id="particleCanvas"></canvas>
+        <div class="aurora-bg"></div>
+        <div class="floating-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="scan-lines"></div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar glass" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">ChaosLinguist</span>
+            </div>
+            <button class="close-sidebar" id="closeSidebar" aria-label="Close sidebar">
+                ✕
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="missions.html" class="nav-item">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-text">Missions</span>
+            </a>
+            <a href="leaderboard.html" class="nav-item">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Leaderboard</span>
+            </a>
+            <a href="achievements.html" class="nav-item">
+                <span class="nav-icon">⭐</span>
+                <span class="nav-text">Achievements</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+            </a>
+            <a href="admin.html" class="nav-item active">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Admin</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="btn btn-secondary logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header glass">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <h1>Admin Dashboard</h1>
+            <div class="header-actions">
+                <button class="btn btn-secondary">Refresh</button>
+            </div>
+        </header>
+
+        <!-- Admin Content -->
+        <div class="admin-content">
+            <!-- System Health -->
+            <section class="system-health">
+                <h2>System Health</h2>
+                <div class="health-grid">
+                    <div class="health-card glass">
+                        <div class="health-status good">●</div>
+                        <h3>Server Status</h3>
+                        <p class="health-value">Online</p>
+                        <p class="health-detail">Uptime: 99.98%</p>
+                    </div>
+                    <div class="health-card glass">
+                        <div class="health-status good">●</div>
+                        <h3>Database</h3>
+                        <p class="health-value">Healthy</p>
+                        <p class="health-detail">Response: 2ms</p>
+                    </div>
+                    <div class="health-card glass">
+                        <div class="health-status good">●</div>
+                        <h3>API</h3>
+                        <p class="health-value">Operational</p>
+                        <p class="health-detail">Requests: 4.2k/min</p>
+                    </div>
+                    <div class="health-card glass">
+                        <div class="health-status warning">●</div>
+                        <h3>Cache</h3>
+                        <p class="health-value">Warning</p>
+                        <p class="health-detail">Memory: 87%</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section class="analytics-section">
+                <h2>Platform Analytics</h2>
+                <div class="analytics-grid">
+                    <div class="analytics-card glass">
+                        <h3>Active Users</h3>
+                        <p class="analytics-value" data-value="12543">0</p>
+                        <p class="analytics-change">↑ 3.2% from yesterday</p>
+                    </div>
+                    <div class="analytics-card glass">
+                        <h3>Missions Completed</h3>
+                        <p class="analytics-value" data-value="8756">0</p>
+                        <p class="analytics-change">↑ 5.1% from yesterday</p>
+                    </div>
+                    <div class="analytics-card glass">
+                        <h3>Total XP Earned</h3>
+                        <p class="analytics-value" data-value="2450000">0</p>
+                        <p class="analytics-change">↑ 2.8% from yesterday</p>
+                    </div>
+                    <div class="analytics-card glass">
+                        <h3>Avg Session Time</h3>
+                        <p class="analytics-value">23m 45s</p>
+                        <p class="analytics-change">↓ 1.5% from yesterday</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Language Popularity -->
+            <section class="language-popularity">
+                <h2>Language Popularity</h2>
+                <div class="language-stats">
+                    <div class="lang-stat">
+                        <span class="lang-badge">🇪🇸</span>
+                        <div class="stat-details">
+                            <span class="lang-name">Spanish</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 35%;"></div>
+                            </div>
+                            <span class="stat-count">4,389 users</span>
+                        </div>
+                    </div>
+                    <div class="lang-stat">
+                        <span class="lang-badge">🇯🇵</span>
+                        <div class="stat-details">
+                            <span class="lang-name">Japanese</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 28%;"></div>
+                            </div>
+                            <span class="stat-count">3,501 users</span>
+                        </div>
+                    </div>
+                    <div class="lang-stat">
+                        <span class="lang-badge">🇫🇷</span>
+                        <div class="stat-details">
+                            <span class="lang-name">French</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 22%;"></div>
+                            </div>
+                            <span class="stat-count">2,756 users</span>
+                        </div>
+                    </div>
+                    <div class="lang-stat">
+                        <span class="lang-badge">🇩🇪</span>
+                        <div class="stat-details">
+                            <span class="lang-name">German</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 15%;"></div>
+                            </div>
+                            <span class="stat-count">1,897 users</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mission Management -->
+            <section class="mission-management">
+                <h2>Mission Management</h2>
+                <div class="management-controls">
+                    <button class="btn btn-small btn-primary">+ Create Mission</button>
+                    <button class="btn btn-small btn-secondary">Bulk Edit</button>
+                    <button class="btn btn-small btn-secondary">Export Data</button>
+                </div>
+                <div class="management-table-container glass">
+                    <table class="management-table">
+                        <thead>
+                            <tr>
+                                <th>Mission Name</th>
+                                <th>Language</th>
+                                <th>Difficulty</th>
+                                <th>Completions</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Restaurant Order</td>
+                                <td>🇪🇸 Spanish</td>
+                                <td><span class="badge beginner">Beginner</span></td>
+                                <td>3,456</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><a href="#">Edit</a> | <a href="#">Stats</a></td>
+                            </tr>
+                            <tr>
+                                <td>Café Conversation</td>
+                                <td>🇪🇸 Spanish</td>
+                                <td><span class="badge intermediate">Intermediate</span></td>
+                                <td>2,134</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><a href="#">Edit</a> | <a href="#">Stats</a></td>
+                            </tr>
+                            <tr>
+                                <td>Business Meeting</td>
+                                <td>🇩🇪 German</td>
+                                <td><span class="badge advanced">Advanced</span></td>
+                                <td>987</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><a href="#">Edit</a> | <a href="#">Stats</a></td>
+                            </tr>
+                            <tr>
+                                <td>Hotel Check-in</td>
+                                <td>🇩🇪 German</td>
+                                <td><span class="badge beginner">Beginner</span></td>
+                                <td>1,234</td>
+                                <td><span class="status-badge draft">Draft</span></td>
+                                <td><a href="#">Edit</a> | <a href="#">Stats</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- User Management -->
+            <section class="user-management">
+                <h2>Recent Users</h2>
+                <div class="users-table-container glass">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Joined</th>
+                                <th>Level</th>
+                                <th>XP</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Luna Wei</td>
+                                <td>2 weeks ago</td>
+                                <td>Level 24</td>
+                                <td>5,230 XP</td>
+                                <td><span class="user-badge active">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>Alex Chen</td>
+                                <td>3 weeks ago</td>
+                                <td>Level 22</td>
+                                <td>4,850 XP</td>
+                                <td><span class="user-badge active">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>James Smith</td>
+                                <td>1 month ago</td>
+                                <td>Level 20</td>
+                                <td>4,620 XP</td>
+                                <td><span class="user-badge inactive">Inactive</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sophie Martin</td>
+                                <td>1 month ago</td>
+                                <td>Level 19</td>
+                                <td>4,380 XP</td>
+                                <td><span class="user-badge active">Active</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
