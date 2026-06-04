@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Achievements - ChaosLinguist">
+    <title>Achievements - ChaosLinguist</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/achievements.css">
+</head>
+<body class="achievements-page">
+    <!-- Background Effects -->
+    <div class="background-container">
+        <canvas id="particleCanvas"></canvas>
+        <div class="aurora-bg"></div>
+        <div class="floating-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="scan-lines"></div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar glass" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">ChaosLinguist</span>
+            </div>
+            <button class="close-sidebar" id="closeSidebar" aria-label="Close sidebar">
+                ✕
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="missions.html" class="nav-item">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-text">Missions</span>
+            </a>
+            <a href="leaderboard.html" class="nav-item">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Leaderboard</span>
+            </a>
+            <a href="achievements.html" class="nav-item active">
+                <span class="nav-icon">⭐</span>
+                <span class="nav-text">Achievements</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+            </a>
+            <a href="admin.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Admin</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="btn btn-secondary logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header glass">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <h1>Achievement Vault</h1>
+            <div class="header-actions">
+                <button class="notification-btn" aria-label="Notifications">
+                    🔔
+                    <span class="notification-badge">3</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Achievements Content -->
+        <div class="achievements-content">
+            <!-- Stats Section -->
+            <section class="achievements-stats">
+                <div class="stats-card glass">
+                    <div class="stat-item">
+                        <span class="stat-icon">🏅</span>
+                        <div class="stat-info">
+                            <span class="stat-label">Achievements Unlocked</span>
+                            <span class="stat-value">12</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">✨</span>
+                        <div class="stat-info">
+                            <span class="stat-label">Total Points</span>
+                            <span class="stat-value">850</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🎖️</span>
+                        <div class="stat-info">
+                            <span class="stat-label">Rank</span>
+                            <span class="stat-value">Collector</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Achievement -->
+            <section class="featured-achievement">
+                <h2>Signature Achievement</h2>
+                <div class="featured-card glass">
+                    <div class="featured-icon">🌍</div>
+                    <div class="featured-content">
+                        <h3>Polyglot</h3>
+                        <p class="featured-description">Master 5 different languages</p>
+                        <div class="featured-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
+                            <span class="progress-text">4 of 5 languages</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievement Categories -->
+            <section class="achievements-categories">
+                <!-- Milestone Achievements -->
+                <div class="category">
+                    <h2 class="category-title">🎯 Milestones</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement-card glass unlocked" data-id="1">
+                            <div class="achievement-icon">🏁</div>
+                            <h3>First Steps</h3>
+                            <p>Complete your first mission</p>
+                            <span class="achievement-date">Unlocked 30 days ago</span>
+                        </div>
+                        <div class="achievement-card glass unlocked" data-id="2">
+                            <div class="achievement-icon">🚀</div>
+                            <h3>Rocket Start</h3>
+                            <p>Reach 100 XP in one day</p>
+                            <span class="achievement-date">Unlocked 15 days ago</span>
+                        </div>
+                        <div class="achievement-card glass unlocked" data-id="3">
+                            <div class="achievement-icon">⚡</div>
+                            <h3>Momentum</h3>
+                            <p>Complete 10 consecutive missions</p>
+                            <span class="achievement-date">Unlocked 7 days ago</span>
+                        </div>
+                        <div class="achievement-card glass unlocked" data-id="4">
+                            <div class="achievement-icon">💯</div>
+                            <h3>Perfectionist</h3>
+                            <p>Score 100% on 5 missions</p>
+                            <span class="achievement-date">Unlocked 2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Streak Achievements -->
+                <div class="category">
+                    <h2 class="category-title">🔥 Streaks</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement-card glass unlocked" data-id="5">
+                            <div class="achievement-icon">🔥</div>
+                            <h3>Fire Starter</h3>
+                            <p>7-day learning streak</p>
+                            <span class="achievement-date">Unlocked 3 weeks ago</span>
+                        </div>
+                        <div class="achievement-card glass unlocked" data-id="6">
+                            <div class="achievement-icon">🌪️</div>
+                            <h3>Tornado</h3>
+                            <p>14-day learning streak</p>
+                            <span class="achievement-date">Unlocked 2 weeks ago</span>
+                        </div>
+                        <div class="achievement-card glass locked" data-id="7">
+                            <div class="achievement-icon locked">🔐</div>
+                            <h3>Inferno</h3>
+                            <p>30-day learning streak</p>
+                            <span class="achievement-progress">Current: 12 days</span>
+                        </div>
+                        <div class="achievement-card glass locked" data-id="8">
+                            <div class="achievement-icon locked">🔐</div>
+                            <h3>Unstoppable</h3>
+                            <p>100-day learning streak</p>
+                            <span class="achievement-progress">Current: 12 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Language Achievements -->
+                <div class="category">
+                    <h2 class="category-title">🌍 Languages</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement-card glass unlocked" data-id="9">
+                            <div class="achievement-icon">🇪🇸</div>
+                            <h3>Spanish Master</h3>
+                            <p>Reach 500 XP in Spanish</p>
+                            <span class="achievement-date">Unlocked 5 days ago</span>
+                        </div>
+                        <div class="achievement-card glass unlocked" data-id="10">
+                            <div class="achievement-icon">🇫🇷</div>
+                            <h3>French Fluent</h3>
+                            <p>Reach 300 XP in French</p>
+                            <span class="achievement-date">Unlocked 10 days ago</span>
+                        </div>
+                        <div class="achievement-card glass locked" data-id="11">
+                            <div class="achievement-icon locked">🔐</div>
+                            <h3>German Legend</h3>
+                            <p>Reach 500 XP in German</p>
+                            <span class="achievement-progress">Progress: 120/500 XP</span>
+                        </div>
+                        <div class="achievement-card glass locked" data-id="12">
+                            <div class="achievement-icon locked">🔐</div>
+                            <h3>Japanese Scholar</h3>
+                            <p>Reach 500 XP in Japanese</p>
+                            <span class="achievement-progress">Progress: 320/500 XP</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/achievements.js"></script>
+</body>
+</html>
