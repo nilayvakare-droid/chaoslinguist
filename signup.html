@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for ChaosLinguist">
+    <title>Sign Up - ChaosLinguist</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+    <!-- Background Effects -->
+    <div class="background-container">
+        <canvas id="particleCanvas"></canvas>
+        <div class="aurora-bg"></div>
+        <div class="floating-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="scan-lines"></div>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-card glass">
+            <div class="auth-header">
+                <div class="logo">
+                    <span class="logo-icon">◆</span>
+                    <span class="logo-text">ChaosLinguist</span>
+                </div>
+                <h1>Join the Chaos</h1>
+                <p>Begin your linguistic journey</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="signup-progress">
+                <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="progress-text">Step <span id="currentStep">1</span> of 3</div>
+            </div>
+
+            <form class="auth-form" id="signupForm" novalidate>
+                <!-- Step 1: Basic Info -->
+                <div class="form-step" id="step1" style="display: block;">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="text" 
+                                id="fullname" 
+                                name="fullname" 
+                                placeholder="John Doe" 
+                                required
+                            >
+                            <span class="input-focus-glow"></span>
+                        </div>
+                        <span class="error-message" id="fullnameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="email" 
+                                id="signup-email" 
+                                name="email" 
+                                placeholder="you@example.com" 
+                                required
+                                autocomplete="email"
+                            >
+                            <span class="input-focus-glow"></span>
+                        </div>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                </div>
+
+                <!-- Step 2: Password & Phone -->
+                <div class="form-step" id="step2" style="display: none;">
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="password" 
+                                id="signup-password" 
+                                name="password" 
+                                placeholder="••••••••" 
+                                required
+                                autocomplete="new-password"
+                            >
+                            <span class="input-focus-glow"></span>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar"><div class="strength-fill"></div></div>
+                            <span class="strength-text">Password strength: <span id="strengthLabel">Weak</span></span>
+                        </div>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="password" 
+                                id="confirm-password" 
+                                name="confirmPassword" 
+                                placeholder="••••••••" 
+                                required
+                                autocomplete="new-password"
+                            >
+                            <span class="input-focus-glow"></span>
+                        </div>
+                        <span class="error-message" id="confirmPasswordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                placeholder="+1 (555) 000-0000" 
+                                required
+                            >
+                            <span class="input-focus-glow"></span>
+                        </div>
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+                </div>
+
+                <!-- Step 3: Language Selection -->
+                <div class="form-step" id="step3" style="display: none;">
+                    <div class="form-group">
+                        <label>Select Your Language</label>
+                        <div class="language-selection">
+                            <label class="language-option">
+                                <input type="radio" name="language" value="spanish" required>
+                                <span class="option-label">🇪🇸 Spanish</span>
+                            </label>
+                            <label class="language-option">
+                                <input type="radio" name="language" value="french" required>
+                                <span class="option-label">🇫🇷 French</span>
+                            </label>
+                            <label class="language-option">
+                                <input type="radio" name="language" value="german" required>
+                                <span class="option-label">🇩🇪 German</span>
+                            </label>
+                            <label class="language-option">
+                                <input type="radio" name="language" value="japanese" required>
+                                <span class="option-label">🇯🇵 Japanese</span>
+                            </label>
+                            <label class="language-option">
+                                <input type="radio" name="language" value="korean" required>
+                                <span class="option-label">🇰🇷 Korean</span>
+                            </label>
+                            <label class="language-option">
+                                <input type="radio" name="language" value="mandarin" required>
+                                <span class="option-label">🇨🇳 Mandarin</span>
+                            </label>
+                        </div>
+                        <span class="error-message" id="languageError"></span>
+                    </div>
+
+                    <label class="terms-checkbox">
+                        <input type="checkbox" name="terms" required>
+                        <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                    </label>
+                    <span class="error-message" id="termsError"></span>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                        ← Back
+                    </button>
+                    <button type="button" class="btn btn-large btn-primary" id="nextBtn">
+                        Continue →
+                    </button>
+                </div>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div class="auth-success" id="successMessage">
+            <div class="success-icon">✓</div>
+            <p>Account created! Redirecting...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentStep = 1;
+            const totalSteps = 3;
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const signupForm = document.getElementById('signupForm');
+            const passwordInput = document.getElementById('signup-password');
+            const confirmPasswordInput = document.getElementById('confirm-password');
+            const successMessage = document.getElementById('successMessage');
+
+            // Password strength indicator
+            passwordInput.addEventListener('input', function() {
+                const strength = calculatePasswordStrength(this.value);
+                const strengthFill = document.querySelector('.strength-fill');
+                const strengthLabel = document.getElementById('strengthLabel');
+                
+                strengthFill.style.width = strength.percentage + '%';
+                strengthFill.style.backgroundColor = strength.color;
+                strengthLabel.textContent = strength.label;
+            });
+
+            function calculatePasswordStrength(password) {
+                let strength = 0;
+                if (password.length >= 8) strength += 25;
+                if (password.length >= 12) strength += 25;
+                if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength += 25;
+                if (/[0-9]/.test(password)) strength += 12.5;
+                if (/[^a-zA-Z0-9]/.test(password)) strength += 12.5;
+
+                let label = 'Weak';
+                let color = '#ff3366';
+                if (strength >= 75) { label = 'Strong'; color = '#00ff99'; }
+                else if (strength >= 50) { label = 'Medium'; color = '#ffaa00'; }
+
+                return { percentage: strength, label, color };
+            }
+
+            nextBtn.addEventListener('click', function() {
+                if (validateStep(currentStep)) {
+                    if (currentStep < totalSteps) {
+                        currentStep++;
+                        updateForm();
+                    } else {
+                        submitForm();
+                    }
+                }
+            });
+
+            prevBtn.addEventListener('click', function() {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateForm();
+                }
+            });
+
+            function validateStep(step) {
+                let isValid = true;
+                if (step === 1) {
+                    const fullname = document.getElementById('fullname').value;
+                    const email = document.getElementById('signup-email').value;
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                    if (!fullname) {
+                        document.getElementById('fullnameError').textContent = 'Full name is required';
+                        isValid = false;
+                    } else {
+                        document.getElementById('fullnameError').textContent = '';
+                    }
+
+                    if (!emailRegex.test(email)) {
+                        document.getElementById('emailError').textContent = 'Please enter a valid email';
+                        isValid = false;
+                    } else {
+                        document.getElementById('emailError').textContent = '';
+                    }
+                } else if (step === 2) {
+                    const password = passwordInput.value;
+                    const confirmPassword = confirmPasswordInput.value;
+                    const phone = document.getElementById('phone').value;
+                    const phoneRegex = /^[\d\s()\-+]+$/;
+
+                    if (password.length < 8) {
+                        document.getElementById('passwordError').textContent = 'Password must be at least 8 characters';
+                        isValid = false;
+                    } else {
+                        document.getElementById('passwordError').textContent = '';
+                    }
+
+                    if (password !== confirmPassword) {
+                        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                        isValid = false;
+                    } else {
+                        document.getElementById('confirmPasswordError').textContent = '';
+                    }
+
+                    if (!phoneRegex.test(phone)) {
+                        document.getElementById('phoneError').textContent = 'Please enter a valid phone number';
+                        isValid = false;
+                    } else {
+                        document.getElementById('phoneError').textContent = '';
+                    }
+                } else if (step === 3) {
+                    const language = document.querySelector('input[name="language"]:checked');
+                    const terms = document.querySelector('input[name="terms"]').checked;
+
+                    if (!language) {
+                        document.getElementById('languageError').textContent = 'Please select a language';
+                        isValid = false;
+                    } else {
+                        document.getElementById('languageError').textContent = '';
+                    }
+
+                    if (!terms) {
+                        document.getElementById('termsError').textContent = 'You must agree to the terms';
+                        isValid = false;
+                    } else {
+                        document.getElementById('termsError').textContent = '';
+                    }
+                }
+                return isValid;
+            }
+
+            function updateForm() {
+                // Hide all steps
+                document.querySelectorAll('.form-step').forEach(step => step.style.display = 'none');
+                document.getElementById('step' + currentStep).style.display = 'block';
+
+                // Update progress
+                document.getElementById('currentStep').textContent = currentStep;
+                document.getElementById('progressFill').style.width = (currentStep / totalSteps * 100) + '%';
+
+                // Update buttons
+                prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
+                nextBtn.textContent = currentStep === totalSteps ? 'Create Account' : 'Continue →';
+            }
+
+            function submitForm() {
+                nextBtn.disabled = true;
+                nextBtn.classList.add('loading');
+
+                setTimeout(() => {
+                    successMessage.classList.add('show');
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

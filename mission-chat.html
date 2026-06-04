@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Mission Chat - ChaosLinguist">
+    <title>Mission Chat - ChaosLinguist</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/mission.css">
+</head>
+<body class="mission-chat-page">
+    <!-- Background Effects -->
+    <div class="background-container">
+        <canvas id="particleCanvas"></canvas>
+        <div class="aurora-bg"></div>
+        <div class="floating-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="scan-lines"></div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar glass" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">ChaosLinguist</span>
+            </div>
+            <button class="close-sidebar" id="closeSidebar" aria-label="Close sidebar">
+                ✕
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="missions.html" class="nav-item active">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-text">Missions</span>
+            </a>
+            <a href="leaderboard.html" class="nav-item">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Leaderboard</span>
+            </a>
+            <a href="achievements.html" class="nav-item">
+                <span class="nav-icon">⭐</span>
+                <span class="nav-text">Achievements</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+            </a>
+            <a href="admin.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Admin</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="btn btn-secondary logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header glass">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <div class="mission-title">
+                <h1>Café Conversation</h1>
+                <span class="language-badge">🇪🇸 Spanish</span>
+            </div>
+            <div class="header-actions">
+                <a href="missions.html" class="btn btn-secondary">Exit Mission</a>
+            </div>
+        </header>
+
+        <!-- Mission Chat Layout -->
+        <div class="mission-chat-layout">
+            <!-- Left Panel: NPC Profile -->
+            <aside class="npc-panel glass">
+                <div class="npc-profile">
+                    <div class="npc-avatar">
+                        <div class="avatar-placeholder">📍</div>
+                        <div class="pulse-ring"></div>
+                    </div>
+                    <h2>María</h2>
+                    <p class="npc-role">Barista</p>
+                    <p class="npc-location">Café Barcelona</p>
+                </div>
+
+                <div class="mission-objectives">
+                    <h3>Objectives</h3>
+                    <div class="objectives-list">
+                        <div class="objective completed">
+                            <span class="checkbox">✓</span>
+                            <span class="objective-text">Greet the barista</span>
+                        </div>
+                        <div class="objective completed">
+                            <span class="checkbox">✓</span>
+                            <span class="objective-text">Order a coffee</span>
+                        </div>
+                        <div class="objective active">
+                            <span class="checkbox">○</span>
+                            <span class="objective-text">Ask about specials</span>
+                        </div>
+                        <div class="objective">
+                            <span class="checkbox">○</span>
+                            <span class="objective-text">Make small talk</span>
+                        </div>
+                        <div class="objective">
+                            <span class="checkbox">○</span>
+                            <span class="objective-text">Pay and say goodbye</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mission-stats">
+                    <div class="stat">
+                        <span class="stat-label">Progress</span>
+                        <span class="stat-value">60%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">XP Earned</span>
+                        <span class="stat-value">+30</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center: Chat Area -->
+            <section class="chat-section">
+                <div class="chat-container glass">
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- Messages will be inserted here -->
+                        <div class="message npc-message">
+                            <div class="message-avatar">📍</div>
+                            <div class="message-bubble glass">
+                                <p>¡Hola! Bienvenido a Café Barcelona. ¿Qué te gustaría?</p>
+                                <span class="message-translation">Hello! Welcome to Café Barcelona. What would you like?</span>
+                            </div>
+                        </div>
+
+                        <div class="message user-message">
+                            <div class="message-bubble glass">
+                                <p>Un café con leche, por favor</p>
+                                <span class="message-translation">A coffee with milk, please</span>
+                            </div>
+                        </div>
+
+                        <div class="message npc-message">
+                            <div class="message-avatar">📍</div>
+                            <div class="message-bubble glass">
+                                <p>Perfecto. Hoy tenemos un especial, café de Colombia.</p>
+                                <span class="message-translation">Perfect. Today we have a special, coffee from Colombia.</span>
+                            </div>
+                        </div>
+
+                        <div class="typing-indicator">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Controls -->
+                <div class="chat-input-area">
+                    <div class="input-options">
+                        <button class="option-btn voice-btn" id="voiceBtn" aria-label="Voice input">
+                            🎤
+                            <span class="tooltip">Hold to record</span>
+                        </button>
+                        <button class="option-btn translate-btn" id="translateBtn" aria-label="Show translation">
+                            🌐
+                            <span class="tooltip">Translation</span>
+                        </button>
+                        <button class="option-btn hint-btn" id="hintBtn" aria-label="Get hint">
+                            💡
+                            <span class="tooltip">Get hint</span>
+                        </button>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            class="chat-input" 
+                            placeholder="Type your response in Spanish..."
+                            autocomplete="off"
+                        >
+                        <button class="send-btn" id="sendBtn" aria-label="Send message">
+                            ➤
+                        </button>
+                    </div>
+
+                    <div class="suggested-responses">
+                        <span class="suggestions-label">Suggestions:</span>
+                        <button class="suggestion-chip">¿Cuál es el especial?</button>
+                        <button class="suggestion-chip">¿Cuánto cuesta?</button>
+                        <button class="suggestion-chip">Sin azúcar, por favor</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Rewards & Info -->
+            <aside class="rewards-panel glass">
+                <h3>Mission Info</h3>
+                <div class="info-card">
+                    <span class="info-label">Current XP</span>
+                    <span class="info-value">+30</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-label">Streak Bonus</span>
+                    <span class="info-value">+10</span>
+                </div>
+
+                <h3>Vocabulary</h3>
+                <div class="vocabulary-list">
+                    <div class="vocab-item">
+                        <span class="vocab-word">café</span>
+                        <span class="vocab-translation">coffee</span>
+                    </div>
+                    <div class="vocab-item">
+                        <span class="vocab-word">por favor</span>
+                        <span class="vocab-translation">please</span>
+                    </div>
+                    <div class="vocab-item">
+                        <span class="vocab-word">especial</span>
+                        <span class="vocab-translation">special</span>
+                    </div>
+                    <div class="vocab-item">
+                        <span class="vocab-word">leche</span>
+                        <span class="vocab-translation">milk</span>
+                    </div>
+                </div>
+
+                <div class="unlock-preview">
+                    <h4>Complete to Unlock</h4>
+                    <div class="unlock-item">
+                        <span class="unlock-icon">⭐</span>
+                        <span>New achievement</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Mission Complete Modal -->
+    <div class="mission-modal glass" id="missionModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Mission Complete! 🎉</h2>
+            </div>
+            <div class="modal-body">
+                <div class="completion-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">⚡</span>
+                        <span class="stat-name">XP Earned</span>
+                        <span class="stat-amount">+150</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🔥</span>
+                        <span class="stat-name">Streak</span>
+                        <span class="stat-amount">+1</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⭐</span>
+                        <span class="stat-name">New Achievement</span>
+                        <span class="stat-amount">Unlocked</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="missions.html" class="btn btn-secondary">Back to Missions</a>
+                <a href="mission-chat.html" class="btn btn-primary">Next Mission</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mission.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messageInput = document.getElementById('messageInput');
+            const sendBtn = document.getElementById('sendBtn');
+            const voiceBtn = document.getElementById('voiceBtn');
+            const chatMessages = document.getElementById('chatMessages');
+            const suggestions = document.querySelectorAll('.suggestion-chip');
+
+            // Send message
+            function sendMessage() {
+                const text = messageInput.value.trim();
+                if (!text) return;
+
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message user-message';
+                userMessage.innerHTML = `
+                    <div class="message-bubble glass">
+                        <p>${text}</p>
+                        <span class="message-translation">You said something</span>
+                    </div>
+                `;
+                chatMessages.appendChild(userMessage);
+
+                messageInput.value = '';
+
+                // Simulate NPC response
+                setTimeout(() => {
+                    const typingIndicator = document.createElement('div');
+                    typingIndicator.className = 'typing-indicator';
+                    typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+                    chatMessages.appendChild(typingIndicator);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                    setTimeout(() => {
+                        typingIndicator.remove();
+                        const npcMessage = document.createElement('div');
+                        npcMessage.className = 'message npc-message';
+                        npcMessage.innerHTML = `
+                            <div class="message-avatar">📍</div>
+                            <div class="message-bubble glass">
+                                <p>¡Excelente! Muy bien.</p>
+                                <span class="message-translation">Excellent! Very good.</span>
+                            </div>
+                        `;
+                        chatMessages.appendChild(npcMessage);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 2000);
+                }, 500);
+            }
+
+            sendBtn.addEventListener('click', sendMessage);
+            messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+
+            // Suggestion chips
+            suggestions.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    messageInput.value = chip.textContent;
+                    messageInput.focus();
+                });
+            });
+
+            // Voice button
+            voiceBtn.addEventListener('click', () => {
+                voiceBtn.classList.toggle('recording');
+            });
+        });
+    </script>
+</body>
+</html>

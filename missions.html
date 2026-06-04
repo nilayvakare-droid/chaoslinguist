@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Missions Library - ChaosLinguist">
+    <title>Missions - ChaosLinguist</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/mission.css">
+</head>
+<body class="missions-page">
+    <!-- Background Effects -->
+    <div class="background-container">
+        <canvas id="particleCanvas"></canvas>
+        <div class="aurora-bg"></div>
+        <div class="floating-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="scan-lines"></div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar glass" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">ChaosLinguist</span>
+            </div>
+            <button class="close-sidebar" id="closeSidebar" aria-label="Close sidebar">
+                ✕
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="missions.html" class="nav-item active">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-text">Missions</span>
+            </a>
+            <a href="leaderboard.html" class="nav-item">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Leaderboard</span>
+            </a>
+            <a href="achievements.html" class="nav-item">
+                <span class="nav-icon">⭐</span>
+                <span class="nav-text">Achievements</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+            </a>
+            <a href="admin.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Admin</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="btn btn-secondary logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header glass">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <div class="header-search">
+                <input type="text" placeholder="Search missions..." class="search-input" id="searchInput">
+            </div>
+            <div class="header-actions">
+                <button class="notification-btn" aria-label="Notifications">
+                    🔔
+                    <span class="notification-badge">3</span>
+                </button>
+                <div class="user-profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%2300ff99'/%3E%3C/svg%3E" alt="User avatar" class="avatar">
+                    <span class="username">Player One</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Missions Content -->
+        <div class="missions-content">
+            <!-- Filters and Controls -->
+            <section class="filters-section">
+                <h1>Mission Library</h1>
+                <div class="filters-controls">
+                    <div class="filter-group">
+                        <label for="difficultyFilter">Difficulty:</label>
+                        <select id="difficultyFilter" class="filter-select">
+                            <option value="all">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="languageFilter">Language:</label>
+                        <select id="languageFilter" class="filter-select">
+                            <option value="all">All Languages</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="french">French</option>
+                            <option value="german">German</option>
+                            <option value="japanese">Japanese</option>
+                            <option value="korean">Korean</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sortBy">Sort By:</label>
+                        <select id="sortBy" class="filter-select">
+                            <option value="recommended">Recommended</option>
+                            <option value="newest">Newest</option>
+                            <option value="popularity">Popularity</option>
+                            <option value="difficulty">Difficulty</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mission Categories -->
+            <section class="categories-section">
+                <!-- Beginner Missions -->
+                <div class="category" data-category="beginner">
+                    <h2 class="category-title">🌱 Beginner Missions</h2>
+                    <div class="missions-grid">
+                        <div class="mission-card glass">
+                            <div class="mission-header">
+                                <h3>Restaurant Order</h3>
+                                <span class="mission-xp">+50 XP</span>
+                            </div>
+                            <div class="mission-language">🇪🇸 Spanish</div>
+                            <p class="mission-description">Order food at a restaurant and handle special requests</p>
+                            <div class="mission-stats">
+                                <span class="stat">⏱️ 5 min</span>
+                                <span class="stat">📝 10 phrases</span>
+                            </div>
+                            <div class="completion-bar">
+                                <div class="completion-fill" style="width: 60%;"></div>
+                            </div>
+                            <a href="mission-chat.html" class="btn btn-small btn-primary">Start Mission</a>
+                        </div>
+
+                        <div class="mission-card glass">
+                            <div class="mission-header">
+                                <h3>Hotel Check-in</h3>
+                                <span class="mission-xp">+50 XP</span>
+                            </div>
+                            <div class="mission-language">🇩🇪 German</div>
+                            <p class="mission-description">Check in at a hotel and ask for room preferences</p>
+                            <div class="mission-stats">
+                                <span class="stat">⏱️ 5 min</span>
+                                <span class="stat">📝 12 phrases</span>
+                            </div>
+                            <div class="completion-bar">
+                                <div class="completion-fill" style="width: 0%;"></div>
+                            </div>
+                            <a href="mission-chat.html" class="btn btn-small btn-primary">Start Mission</a>
+                        </div>
+
+                        <div class="mission-card glass">
+                            <div class="mission-header">
+                                <h3>Greetings</h3>
+                                <span class="mission-xp">+30 XP</span>
+                            </div>
+                            <div class="mission-language">🇯🇵 Japanese</div>
+                            <p class="mission-description">Master basic greetings and introductions</p>
+                            <div class="mission-stats">
+                                <span class="stat">⏱️ 3 min</span>
+                                <span class="stat">📝 8 phrases</span>
+                            </div>
+                            <div class="completion-bar">
+                                <div class="completion-fill" style="width: 100%;"></div>
+                            </div>
+                            <a href="mission-chat.html" class="btn btn-small btn-primary">Replay</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intermediate Missions -->
+                <div class="category" data-category="intermediate">
+                    <h2 class="category-title">⚡ Intermediate Missions</h2>
+                    <div class="missions-grid">
+                        <div class="mission-card glass">
+                            <div class="mission-header">
+                                <h3>Café Conversation</h3>
+                                <span class="mission-xp">+100 XP</span>
+                            </div>
+                            <div class="mission-language">🇪🇸 Spanish</div>
+                            <p class="mission-description">Have a casual conversation about daily life</p>
+                            <div class="mission-stats">
+                                <span class="stat">⏱️ 10 min</span>
+                                <span class="stat">📝 25 phrases</span>
+                            </div>
+                            <div class="completion-bar">
+                                <div class="completion-fill" style="width: 65%;"></div>
+                            </div>
+                            <a href="mission-chat.html" class="btn btn-small btn-primary">Continue</a>
+                        </div>
+
+                        <div class="mission-card glass">
+                            <div class="mission-header">
+                                <h3>Shopping Negotiation</h3>
+                                <span class="mission-xp">+100 XP</span>
+                            </div>
+                            <div class="mission-language">🇫🇷 French</div>
+                            <p class="mission-description">Bargain at the market with confidence</p>
+                            <div class="mission-stats">
+                                <span class="stat">⏱️ 12 min</span>
+                                <span class="stat">📝 30 phrases</span>
+                            </div>
+                            <div class="completion-bar">
+                                <div class="completion-fill" style="width: 0%;"></div>
+                            </div>
+                            <a href="mission-chat.html" class="btn btn-small btn-primary">Start Mission</a>
+                        </div>
+
+                        <div class="mission-card glass">
+                            <div class="mission-header">
+                                <h3>Travel Stories</h3>
+                                <span class="mission-xp">+120 XP</span>
+                            </div>
+                            <div class="mission-language">🇰🇷 Korean</div>
+                            <p class="mission-description">Tell stories about your travels</p>
+                            <div class="mission-stats">
+                                <span class="stat">⏱️ 15 min</span>
+                                <span class="stat">📝 35 phrases</span>
+                            </div>
+                            <div class="completion-bar">
+                                <div class="completion-fill" style="width: 0%;"></div>
+                            </div>
+                            <a href="mission-chat.html" class="btn btn-small btn-primary">Start Mission</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Missions -->
+                <div class="category" data-category="advanced">
+                    <h2 class="category-title">🔥 Advanced Missions</h2>
+                    <div class="missions-grid">
+                        <div class="mission-card glass">
+                            <div class="mission-header">
+                                <h3>Business Meeting</h3>
+                                <span class="mission-xp">+200 XP</span>
+                            </div>
+                            <div class="mission-language">🇩🇪 German</div>
+                            <p class="mission-description">Conduct a formal business negotiation</p>
+                            <div class="mission-stats">
+                                <span class="stat">⏱️ 20 min</span>
+                                <span class="stat">📝 50 phrases</span>
+                            </div>
+                            <div class="completion-bar">
+                                <div class="completion-fill" style="width: 0%;"></div>
+                            </div>
+                            <a href="mission-chat.html" class="btn btn-small btn-primary">Start Mission</a>
+                        </div>
+
+                        <div class="mission-card glass">
+                            <div class="mission-header">
+                                <h3>Debate Politics</h3>
+                                <span class="mission-xp">+250 XP</span>
+                            </div>
+                            <div class="mission-language">🇫🇷 French</div>
+                            <p class="mission-description">Engage in a thoughtful debate on current issues</p>
+                            <div class="mission-stats">
+                                <span class="stat">⏱️ 25 min</span>
+                                <span class="stat">📝 60 phrases</span>
+                            </div>
+                            <div class="completion-bar">
+                                <div class="completion-fill" style="width: 0%;"></div>
+                            </div>
+                            <a href="mission-chat.html" class="btn btn-small btn-primary">Start Mission</a>
+                        </div>
+
+                        <div class="mission-card glass">
+                            <div class="mission-header">
+                                <h3>Literary Analysis</h3>
+                            <span class="mission-xp">+300 XP</span>
+                            </div>
+                            <div class="mission-language">🇨🇳 Mandarin</div>
+                            <p class="mission-description">Discuss classical literature with a scholar</p>
+                            <div class="mission-stats">
+                                <span class="stat">⏱️ 30 min</span>
+                                <span class="stat">📝 75 phrases</span>
+                            </div>
+                            <div class="completion-bar">
+                                <div class="completion-fill" style="width: 0%;"></div>
+                            </div>
+                            <a href="mission-chat.html" class="btn btn-small btn-primary">Start Mission</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mission.js"></script>
+</body>
+</html>

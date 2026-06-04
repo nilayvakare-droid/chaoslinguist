@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ChaosLinguist Dashboard">
+    <title>Dashboard - ChaosLinguist</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-page">
+    <!-- Background Effects -->
+    <div class="background-container">
+        <canvas id="particleCanvas"></canvas>
+        <div class="aurora-bg"></div>
+        <div class="floating-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="scan-lines"></div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar glass" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">ChaosLinguist</span>
+            </div>
+            <button class="close-sidebar" id="closeSidebar" aria-label="Close sidebar">
+                ✕
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item active">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="missions.html" class="nav-item">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-text">Missions</span>
+            </a>
+            <a href="leaderboard.html" class="nav-item">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Leaderboard</span>
+            </a>
+            <a href="achievements.html" class="nav-item">
+                <span class="nav-icon">⭐</span>
+                <span class="nav-text">Achievements</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+            </a>
+            <a href="admin.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Admin</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="btn btn-secondary logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header glass">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <div class="header-search">
+                <input type="text" placeholder="Search missions..." class="search-input">
+            </div>
+            <div class="header-actions">
+                <button class="notification-btn" aria-label="Notifications">
+                    🔔
+                    <span class="notification-badge">3</span>
+                </button>
+                <div class="user-profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%2300ff99'/%3E%3C/svg%3E" alt="User avatar" class="avatar">
+                    <span class="username">Player One</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <h1>Welcome back, Player One! 👋</h1>
+                <p>Continue your linguistic journey. Your next mission awaits.</p>
+            </section>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total XP</p>
+                        <p class="stat-value" data-value="2850">0</p>
+                        <p class="stat-change">+250 this week</p>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Current Streak</p>
+                        <p class="stat-value" data-value="12">0</p>
+                        <p class="stat-change">days</p>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Missions Complete</p>
+                        <p class="stat-value" data-value="47">0</p>
+                        <p class="stat-change">+3 this week</p>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon">🌍</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Languages Learning</p>
+                        <p class="stat-value" data-value="5">0</p>
+                        <p class="stat-change">Spanish, French...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Current Missions -->
+            <section class="missions-section">
+                <h2>Active Missions</h2>
+                <div class="missions-list">
+                    <div class="mission-card glass">
+                        <div class="mission-header">
+                            <h3>Café Conversation</h3>
+                            <span class="mission-level">Intermediate</span>
+                        </div>
+                        <p class="mission-description">Order a coffee and chat with the barista in Spanish</p>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%;"></div>
+                            </div>
+                            <span class="progress-text">65% Complete</span>
+                        </div>
+                        <a href="mission-chat.html" class="btn btn-small btn-primary">Continue Mission</a>
+                    </div>
+
+                    <div class="mission-card glass">
+                        <div class="mission-header">
+                            <h3>Market Haggling</h3>
+                            <span class="mission-level">Advanced</span>
+                        </div>
+                        <p class="mission-description">Negotiate prices at a French market</p>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%;"></div>
+                            </div>
+                            <span class="progress-text">25% Complete</span>
+                        </div>
+                        <a href="mission-chat.html" class="btn btn-small btn-primary">Continue Mission</a>
+                    </div>
+
+                    <div class="mission-card glass">
+                        <div class="mission-header">
+                            <h3>Travel Booking</h3>
+                            <span class="mission-level">Beginner</span>
+                        </div>
+                        <p class="mission-description">Book a hotel room in German</p>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%;"></div>
+                            </div>
+                            <span class="progress-text">90% Complete</span>
+                        </div>
+                        <a href="mission-chat.html" class="btn btn-small btn-primary">Complete Mission</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Language Progress -->
+            <section class="language-progress-section">
+                <h2>Language Mastery</h2>
+                <div class="mastery-grid">
+                    <div class="mastery-card glass">
+                        <h3>Spanish</h3>
+                        <div class="circular-progress" data-progress="68">
+                            <svg viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="90" class="progress-bg"></circle>
+                                <circle cx="100" cy="100" r="90" class="progress-fill"></circle>
+                            </svg>
+                            <div class="progress-text">68%</div>
+                        </div>
+                        <p class="level-text">Intermediate</p>
+                    </div>
+                    <div class="mastery-card glass">
+                        <h3>French</h3>
+                        <div class="circular-progress" data-progress="45">
+                            <svg viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="90" class="progress-bg"></circle>
+                                <circle cx="100" cy="100" r="90" class="progress-fill"></circle>
+                            </svg>
+                            <div class="progress-text">45%</div>
+                        </div>
+                        <p class="level-text">Beginner</p>
+                    </div>
+                    <div class="mastery-card glass">
+                        <h3>German</h3>
+                        <div class="circular-progress" data-progress="32">
+                            <svg viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="90" class="progress-bg"></circle>
+                                <circle cx="100" cy="100" r="90" class="progress-fill"></circle>
+                            </svg>
+                            <div class="progress-text">32%</div>
+                        </div>
+                        <p class="level-text">Beginner</p>
+                    </div>
+                    <div class="mastery-card glass">
+                        <h3>Japanese</h3>
+                        <div class="circular-progress" data-progress="78">
+                            <svg viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="90" class="progress-bg"></circle>
+                                <circle cx="100" cy="100" r="90" class="progress-fill"></circle>
+                            </svg>
+                            <div class="progress-text">78%</div>
+                        </div>
+                        <p class="level-text">Intermediate</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Achievements -->
+            <section class="achievements-preview-section">
+                <h2>Recent Achievements</h2>
+                <div class="achievements-preview">
+                    <div class="achievement-badge glass" title="First Steps: Complete 5 missions">
+                        <span class="achievement-icon">🏅</span>
+                        <span class="achievement-title">First Steps</span>
+                    </div>
+                    <div class="achievement-badge glass" title="Streak Master: 10-day streak">
+                        <span class="achievement-icon">🔥</span>
+                        <span class="achievement-title">Streak Master</span>
+                    </div>
+                    <div class="achievement-badge glass" title="Polyglot: Learn 5 languages">
+                        <span class="achievement-icon">🌍</span>
+                        <span class="achievement-title">Polyglot</span>
+                    </div>
+                    <div class="achievement-badge glass locked" title="Locked: 1000 XP Required">
+                        <span class="achievement-icon">🔒</span>
+                        <span class="achievement-title">Locked</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

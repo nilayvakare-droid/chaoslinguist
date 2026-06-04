@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leaderboard - ChaosLinguist">
+    <title>Leaderboard - ChaosLinguist</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
+</head>
+<body class="leaderboard-page">
+    <!-- Background Effects -->
+    <div class="background-container">
+        <canvas id="particleCanvas"></canvas>
+        <div class="aurora-bg"></div>
+        <div class="floating-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="scan-lines"></div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar glass" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">ChaosLinguist</span>
+            </div>
+            <button class="close-sidebar" id="closeSidebar" aria-label="Close sidebar">
+                ✕
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="missions.html" class="nav-item">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-text">Missions</span>
+            </a>
+            <a href="leaderboard.html" class="nav-item active">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Leaderboard</span>
+            </a>
+            <a href="achievements.html" class="nav-item">
+                <span class="nav-icon">⭐</span>
+                <span class="nav-text">Achievements</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+            </a>
+            <a href="admin.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Admin</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="btn btn-secondary logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header glass">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <h1>Global Leaderboard</h1>
+            <div class="header-actions">
+                <button class="notification-btn" aria-label="Notifications">
+                    🔔
+                    <span class="notification-badge">3</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Leaderboard Content -->
+        <div class="leaderboard-content">
+            <!-- Filters -->
+            <section class="leaderboard-filters">
+                <div class="filter-group">
+                    <label for="timeFilter">Time Period:</label>
+                    <select id="timeFilter" class="filter-select">
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="all">All Time</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="languageFilter">Language:</label>
+                    <select id="languageFilter" class="filter-select">
+                        <option value="all">All Languages</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="french">French</option>
+                        <option value="german">German</option>
+                        <option value="japanese">Japanese</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Podium Section -->
+            <section class="podium-section">
+                <h2>Top Performers</h2>
+                <div class="podium">
+                    <!-- 2nd Place -->
+                    <div class="podium-place second">
+                        <div class="rank-badge">2</div>
+                        <div class="podium-avatar">
+                            <div class="avatar-placeholder">👤</div>
+                        </div>
+                        <h3>Alex Chen</h3>
+                        <p class="xp-amount">4,850 XP</p>
+                        <div class="podium-height"></div>
+                    </div>
+
+                    <!-- 1st Place -->
+                    <div class="podium-place first">
+                        <div class="rank-badge">1</div>
+                        <div class="crown">👑</div>
+                        <div class="podium-avatar">
+                            <div class="avatar-placeholder">👤</div>
+                        </div>
+                        <h3>Luna Wei</h3>
+                        <p class="xp-amount">5,230 XP</p>
+                        <div class="podium-height"></div>
+                    </div>
+
+                    <!-- 3rd Place -->
+                    <div class="podium-place third">
+                        <div class="rank-badge">3</div>
+                        <div class="podium-avatar">
+                            <div class="avatar-placeholder">👤</div>
+                        </div>
+                        <h3>James Smith</h3>
+                        <p class="xp-amount">4,620 XP</p>
+                        <div class="podium-height"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Your Rank -->
+            <section class="your-rank-section">
+                <h2>Your Position</h2>
+                <div class="your-rank-card glass">
+                    <div class="rank-info">
+                        <span class="your-rank-number">47</span>
+                        <div class="rank-details">
+                            <h3>Player One</h3>
+                            <p>You're in the top 10% of learners! Keep it up!</p>
+                        </div>
+                    </div>
+                    <div class="rank-xp">
+                        <p class="xp-label">Total XP</p>
+                        <p class="xp-value">2,850</p>
+                        <p class="xp-to-next">+350 to next rank</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Full Leaderboard Table -->
+            <section class="full-leaderboard">
+                <h2>Full Rankings</h2>
+                <div class="leaderboard-table-container glass">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Player</th>
+                                <th>Language</th>
+                                <th>XP</th>
+                                <th>Streak</th>
+                                <th>Missions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="highlight-row">
+                                <td class="rank-cell">1 👑</td>
+                                <td class="name-cell">Luna Wei</td>
+                                <td class="language-cell">🇪🇸</td>
+                                <td class="xp-cell">5,230</td>
+                                <td class="streak-cell">🔥 28</td>
+                                <td class="missions-cell">156</td>
+                            </tr>
+                            <tr>
+                                <td class="rank-cell">2</td>
+                                <td class="name-cell">Alex Chen</td>
+                                <td class="language-cell">🇯🇵</td>
+                                <td class="xp-cell">4,850</td>
+                                <td class="streak-cell">🔥 21</td>
+                                <td class="missions-cell">142</td>
+                            </tr>
+                            <tr>
+                                <td class="rank-cell">3</td>
+                                <td class="name-cell">James Smith</td>
+                                <td class="language-cell">🇫🇷</td>
+                                <td class="xp-cell">4,620</td>
+                                <td class="streak-cell">🔥 15</td>
+                                <td class="missions-cell">138</td>
+                            </tr>
+                            <tr>
+                                <td class="rank-cell">4</td>
+                                <td class="name-cell">Sophie Martin</td>
+                                <td class="language-cell">🇩🇪</td>
+                                <td class="xp-cell">4,380</td>
+                                <td class="streak-cell">🔥 12</td>
+                                <td class="missions-cell">125</td>
+                            </tr>
+                            <tr>
+                                <td class="rank-cell">5</td>
+                                <td class="name-cell">Carlos Rodriguez</td>
+                                <td class="language-cell">🇰🇷</td>
+                                <td class="xp-cell">4,150</td>
+                                <td class="streak-cell">🔥 8</td>
+                                <td class="missions-cell">119</td>
+                            </tr>
+                            <tr>
+                                <td class="rank-cell">...
+</td>
+                                <td colspan="5"></td>
+                            </tr>
+                            <tr class="your-row">
+                                <td class="rank-cell">47</td>
+                                <td class="name-cell"><strong>Player One</strong></td>
+                                <td class="language-cell">🇪🇸</td>
+                                <td class="xp-cell">2,850</td>
+                                <td class="streak-cell">🔥 12</td>
+                                <td class="missions-cell">47</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/leaderboard.js"></script>
+</body>
+</html>

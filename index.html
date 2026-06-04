@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ChaosLinguist - Master languages through AI-powered missions">
+    <title>ChaosLinguist - Futuristic Language Learning</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="background-container">
+        <canvas id="particleCanvas"></canvas>
+        <div class="aurora-bg"></div>
+        <div class="floating-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="scan-lines"></div>
+        <div class="cyber-grid"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">ChaosLinguist</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#languages">Languages</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="login.html" class="btn-nav">Login</a></li>
+                <li><a href="signup.html" class="btn-nav btn-primary">Sign Up</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-word">Master</span>
+                <span class="title-word">Any</span>
+                <span class="title-word">Language</span>
+                <span class="title-word">With AI</span>
+            </h1>
+            <p class="hero-subtitle">
+                Embark on immersive AI-powered missions. Learn languages through real-world conversations with holographic NPCs.
+            </p>
+            <div class="hero-cta">
+                <a href="signup.html" class="btn btn-large btn-primary magnetic-btn">Start Learning Now</a>
+                <a href="#demo" class="btn btn-large btn-secondary magnetic-btn">Watch Demo</a>
+            </div>
+        </div>
+
+        <!-- Mission Radar -->
+        <div class="mission-radar">
+            <div class="radar-container">
+                <svg class="radar-svg" viewBox="0 0 200 200">
+                    <circle cx="100" cy="100" r="95" class="radar-circle"></circle>
+                    <circle cx="100" cy="100" r="65" class="radar-circle"></circle>
+                    <circle cx="100" cy="100" r="35" class="radar-circle"></circle>
+                    <line x1="100" y1="5" x2="100" y2="195" class="radar-line"></line>
+                    <line x1="5" y1="100" x2="195" y2="100" class="radar-line"></line>
+                </svg>
+                <div class="radar-blip blip-1"></div>
+                <div class="radar-blip blip-2"></div>
+                <div class="radar-blip blip-3"></div>
+                <div class="radar-center"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why ChaosLinguist?</h2>
+        <div class="features-grid">
+            <div class="feature-card glass">
+                <div class="feature-icon">🤖</div>
+                <h3>AI-Powered Missions</h3>
+                <p>Dynamic conversations with intelligent NPCs that adapt to your learning level</p>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">🎯</div>
+                <h3>Gamified Learning</h3>
+                <p>Earn XP, unlock achievements, and climb the global leaderboard</p>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">🌍</div>
+                <h3>50+ Languages</h3>
+                <p>Learn from English to Klingon—immerse yourself in any language</p>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">🎤</div>
+                <h3>Voice Recognition</h3>
+                <p>Real-time pronunciation feedback powered by advanced AI</p>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">🏆</div>
+                <h3>Leaderboards</h3>
+                <p>Compete globally and showcase your linguistic prowess</p>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">📊</div>
+                <h3>Analytics</h3>
+                <p>Track your progress with detailed stats and insights</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section class="languages" id="languages">
+        <h2 class="section-title">Choose Your Language</h2>
+        <div class="languages-grid">
+            <div class="language-card glass">
+                <div class="lang-flag">🇪🇸</div>
+                <h3>Spanish</h3>
+                <p>12,543 learners</p>
+            </div>
+            <div class="language-card glass">
+                <div class="lang-flag">🇫🇷</div>
+                <h3>French</h3>
+                <p>10,892 learners</p>
+            </div>
+            <div class="language-card glass">
+                <div class="lang-flag">🇩🇪</div>
+                <h3>German</h3>
+                <p>8,234 learners</p>
+            </div>
+            <div class="language-card glass">
+                <div class="lang-flag">🇯🇵</div>
+                <h3>Japanese</h3>
+                <p>7,654 learners</p>
+            </div>
+            <div class="language-card glass">
+                <div class="lang-flag">🇰🇷</div>
+                <h3>Korean</h3>
+                <p>6,432 learners</p>
+            </div>
+            <div class="language-card glass">
+                <div class="lang-flag">🇨🇳</div>
+                <h3>Mandarin</h3>
+                <p>9,876 learners</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content glass">
+            <h2>Ready to Begin Your Journey?</h2>
+            <p>Join thousands of learners mastering languages with AI</p>
+            <a href="signup.html" class="btn btn-large btn-primary magnetic-btn">Get Started Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>ChaosLinguist</h4>
+                <p>Master languages through AI-powered immersion</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ChaosLinguist. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
